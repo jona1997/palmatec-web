@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PALMATEC - Políticas Corporativas</title>
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --verde-palma: #76BC21;
+            --azul-palmatec: #004085;
+            --azul-oscuro: #002B5B;
+            --gris-fondo: #F4F6F9;
+            --blanco: #FFFFFF;
+            --texto: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* Encabezado / Header */
+        header {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container img {
+            max-height: 50px;
+            width: auto;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(0, 64, 133, 0.85), rgba(0, 43, 91, 0.85)), 
+                        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: var(--blanco);
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Sección Misión y Visión */
+        .mission-vision-container {
+            max-width: 1100px;
+            margin: -2rem auto 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .mv-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            border-left: 5px solid var(--azul-palmatec);
+        }
+
+        .mv-card.vision {
+            border-left-color: var(--verde-palma);
+        }
+
+        .mv-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-palmatec);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mv-card.vision h3 {
+            color: var(--azul-oscuro);
+        }
+
+        .mv-card p {
+            color: #555;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* Sección de Valores (Imagen General Ampliada) */
+        .values-section {
+            max-width: 1100px;
+            margin: 4rem auto 0;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .values-image-container {
+            background: var(--blanco);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            display: block;
+            width: 100%;
+        }
+
+        .values-image-container img {
+            width: 100%;       /* Ocupa todo el ancho disponible del contenedor */
+            max-width: 900px;  /* Tamaño máximo grande para que luzca imponente */
+            height: auto;      /* Mantiene la proporción original de la imagen */
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-palmatec);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--verde-palma);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid de Políticas */
+        .grid-politicas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--verde-palma);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .card-body {
+            padding: 1.8rem;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-palmatec);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-descargar {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--azul-palmatec);
+            color: var(--blanco);
+            padding: 0.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-descargar:hover {
+            background-color: var(--verde-palma);
+        }
+
+        /* Pie de Página / Footer */
+        footer {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 3rem 1.5rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--verde-palma);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* Adaptabilidad para Teléfonos */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            header {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con Logo -->
+    <header>
+        <div class="logo-container">
+            <img src='https://wppalmatec.azurewebsites.net/wp-content/uploads/2022/07/1-palmateclogo.png' alt="Logo Palmatec">
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero">
+        <h1>Portal de Políticas Institucionales</h1>
+        <p>En Palmatec Corporation de Costa Rica S.A. promovemos una operación responsable y sostenible, basada en el respeto por las personas, la protección del medio ambiente, los derechos humanos, la seguridad laboral y el desarrollo responsable de nuestros productores y comunidades.</p>
+    </section>
+
+    <!-- Sección de Misión y Visión -->
+    <section class="mission-vision-container">
+        <div class="mission-vision-grid">
+            <div class="mv-card">
+                <h3>Misión</h3>
+                <p>“Tener una participación significativa en los mercados de aceites y bioenergías, buscando siempre el bienestar de nuestros clientes, colaboradores, accionistas, utilizando las más altas tecnologías de modo que nuestros procesos sean siempre los mejores en la producción y en la protección del medio ambiente.”</p>
+            </div>
+            <div class="mv-card vision">
+                <h3>Visión</h3>
+                <p>“Palmatec es una empresa que busca consolidarse como líder en los mercados productores de aceites derivados de la Palma así como en la producción de bioenergías que promuevan el desarrollo de nuestro entorno social y comercial, proporcionando una rentabilidad sostenida a sus estimados clientes y accionistas”.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Valores Corporativos (Imagen Ampliada) -->
+    <section class="values-section">
+        <h2 class="section-title">Nuestros Valores</h2>
+        <div class="values-image-container">
+                <img src="C:/Users/jging/Desktop/Video promocional del qr/Valores.png" alt="Valores Corporativos" style="width: 100%; max-width: 900px; height: auto; border-radius: 8px;">
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección de Documentos y Políticas -->
+    <main class="container">
+        <h2 class="section-title">Nuestros Compromisos y Normativas</h2>
+
+        <div class="grid-politicas">
+
+            <!-- Tarjeta 1: Seguridad y Salud (Trabajadores) -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Politica de Salud y Seguridad Ocupacional</h3>
+                    <p>Prevención de riesgos, protección de nuestros colaboradores y promoción de un ambiente de trabajo seguro y saludable.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-SO-01. Politica de Salud y Seguridad Ocupacional.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2: Abastecimiento (Productores) -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Declaración sobre el Trabajo Infantil</h3>
+                    <p>Compromiso con la protección de las personas menores de edad y la prevención del trabajo infantil en nuestras operaciones y cadena de suministro.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-11. Declaración sobre el Trabajo Infantil.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3: Sostenibilidad (Público General) -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Declaración sobre el Trabajo Forzado</h3>
+                    <p>Compromiso con el respeto de los derechos laborales y la eliminación de cualquier forma de trabajo forzado u obligatorio.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-10. Declaración sobre el Trabajo Forzado.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Politica sobre Trabajadores Migrantes</h3>
+                    <p>Promovemos la igualdad, el respeto y condiciones laborales justas para todas las personas trabajadoras migrantes.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-09. Politica sobre Trabajadores Migrantes.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+ 	<!-- Tarjeta 5: Sostenibilidad (Público General) -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Declaración sobre la Igualdad de Oportunidades</h3>
+                    <p>Impulsamos oportunidades laborales equitativas, promoviendo el respeto, la inclusión y la no discriminación en nuestra organización</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-07. Declaración sobre la Igualdad de Oportunidades.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+	<!-- Tarjeta 6: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3> Politica de Sostenibilidad NDPE</h3>
+                    <p>Compromiso con la protección de los bosques, los ecosistemas, los derechos humanos y las comunidades, promoviendo una cadena de suministro responsable y sostenible.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-GA-02. Politica de Sostenibilidad NDPE.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+	<!-- Tarjeta 8: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Declaración sobre los derechos consuetudinarios</h3>
+                    <p>Respetamos los derechos de propiedad, tenencia y uso de la tierra, promoviendo relaciones transparentes y responsables con productores y comunidades locales.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-06. Declaración sobre los derechos consuetudinarios.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+	<!-- Tarjeta 9: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Politica de Libertad de Asociación</h3>
+                    <p>Respetamos el derecho de nuestros colaboradores a la libre asociación y representación, promoviendo un entorno laboral basado en el respeto, el diálogo y la libertad.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-05. Politica de Libertad de Asociación.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+	<!-- Tarjeta 10: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Politica de Derechos Reproductivos</h3>
+                    <p>Promovemos el respeto, la igualdad y la autonomía en las decisiones reproductivas, garantizando un entorno laboral libre de discriminación.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-04. Politica de Derechos Reproductivos.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+	<!-- Tarjeta 11: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Politica de Derechos Humanos</h3>
+                    <p>Promovemos el respeto, la igualdad y la dignidad de todas las personas, garantizando un entorno laboral libre de discriminación, violencia, amenazas y represalias, y respetando los derechos humanos en todas nuestras operaciones.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-03. Politica de Derechos Humanos v3.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+	<!-- Tarjeta 12: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3> Politica contra el Hostigamiento y Acoso Sexual</h3>
+                    <p>Promovemos un ambiente laboral seguro, respetuoso y libre de hostigamiento y acoso sexual para todas las personas.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-01. Politica contra el Hostigamiento y Acoso Sexual.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+<!-- Tarjeta 12: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3> Politica contra el Acoso y Discriminacion Laboral</h3>
+                    <p>Promovemos un ambiente laboral basado en el respeto, la igualdad y la dignidad, libre de cualquier forma de acoso, hostigamiento o discriminación.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-RH-02. Politica contra el Acoso y Discriminacion Laboral.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+	<!-- Tarjeta 14: Código de Ética -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-icon"></div>
+                    <h3>Politica Ambiental</h3>
+                    <p>Desarrollamos nuestras operaciones con responsabilidad ambiental, promoviendo la conservación de los recursos naturales, la prevención de la contaminación y el desarrollo sostenible.</p>
+                </div>
+                <div style="padding: 0 1.8rem 1.8rem;">
+                    <a href="Politicas/PL-SA-GA-01. Politica Ambiental.pdf" class="btn-descargar" target="_blank">Ver Documento</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <img src="https://wppalmatec.azurewebsites.net/wp-content/uploads/2022/07/1-palmateclogo.png" alt="Palmatec Logo" style="max-width: 150px; height: auto;">
+                <p>Tecnología e innovación al servicio del productor</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p>📍 Caracol de la Vaca, Laurel, Corredores, Puntarenas</p>
+                <p>📞 Teléfono: +506 2783-9550</p>
+                <p>✉️ Correo: info@grupo.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Atención</h4>
+                <p>Horario de atención a productores:</p>
+                <p>Lunes a Viernes: 7:00 AM - 5:00 PM</p>
+                <p>Sabado: 7:00 AM - 12:00 MD</p>
+                <p>Domingo: Cerrado</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PALMATEC - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
